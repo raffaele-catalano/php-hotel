@@ -21,7 +21,7 @@
             'description' => 'Rustic, Scenic, Serene',
             'parking' => false,
             'vote' => 1,
-            'distance_to_center' => 1
+            'distance_to_center' => 2.4
         ],
         [
             'name' => 'Hotel Bellavista',
@@ -106,6 +106,9 @@
                                         }
                                         if ($key === 'vote') {
                                             $value = $value . ' ' . '<i class="fa-solid fa-star" style="color: #ffd700;"></i>';
+                                        }
+                                        if ($key === 'distance_to_center') {
+                                            $value = $value . ' ' . 'km';
                                         }
                                         echo "$value";
                                         ?>
