@@ -47,7 +47,7 @@
 
     ];
     // console log
-    var_dump($hotels);
+    // var_dump($hotels);
 ?>
 
 <!DOCTYPE html>
@@ -58,20 +58,39 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- bootstrap -->
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.css' integrity='sha512-bR79Bg78Wmn33N5nvkEyg66hNg+xF/Q8NA8YABbj+4sBngYhv9P8eum19hdjYcY7vXk/vRkhM3v/ZndtgEXRWw==' crossorigin='anonymous'/>
     <!-- favicon -->
     <link rel="shortcut icon" href="assets/img/hotels_fav.png" type="png">
+    <!-- scss -->
+    <link rel="stylesheet" href="assets/css/style.css">
     <title>Hotels</title>
 </head>
 
 <body>
-    <h1>Hotels List</h1>
-    <?php foreach ($hotels as $hotel) { ?>
-        <ul>
-        <?php foreach ($hotel as $key => $value) : ?>
-            <li><?php echo "$key: $value" ?></li>
-        <?php endforeach; ?>
-        </ul>
-    <?php }; ?>
+    <div class="wrapper d-flex justify-content-center align-items-center">
+        <div class="container p-4">
+            <h1 class="text-center fw-bold mb-3">Hotels List</h1>
+            <table class="table">
+                <thead>
+                    <tr>
+                            <?php foreach ($hotels[0] as $key => $value ) : ?>
+                                <th class="text-light fw-bold text-uppercase"><?php echo "$key" ?></th>
+                            <?php endforeach; ?>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($hotels as $hotel ) : ?>
+                        <tr>
+                            <?php foreach ($hotel as $value) : ?>
+                            <td class="text-light"><?php echo "$value" ?></td>
+                            <?php endforeach; ?>
+                        </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+            </table>
+        </div>
+    </div>
 </body>
 
 </html>
