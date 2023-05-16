@@ -62,7 +62,9 @@
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.css' integrity='sha512-bR79Bg78Wmn33N5nvkEyg66hNg+xF/Q8NA8YABbj+4sBngYhv9P8eum19hdjYcY7vXk/vRkhM3v/ZndtgEXRWw==' crossorigin='anonymous'/>
     <!-- favicon -->
     <link rel="shortcut icon" href="assets/img/hotels_fav.png" type="png">
-    <!-- scss -->
+    <!-- font-awesome -->
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.css' integrity='sha512-Z0kTB03S7BU+JFU0nw9mjSBcRnZm2Bvm0tzOX9/OuOuz01XQfOpa0w/N9u6Jf2f1OAdegdIPWZ9nIZZ+keEvBw==' crossorigin='anonymous'/>
+    <!-- css -->
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Hotels</title>
 </head>
@@ -72,7 +74,7 @@
         <div class="container p-4">
             <h1 class="text-center fw-bold mb-3">Hotels.bool</h1>
             <div class="select_container">
-                <select class="form-select" name="hotels_filter" id="hotels">
+                <select class="form-select" name="hotels_filter" id="hotels" aria-label="hotels">
                     <option selected value="">Filter</option>
                     <option value="1">All Hotels</option>
                     <option value="2">Hotels with Parking</option>
@@ -82,7 +84,14 @@
                 <thead>
                     <tr>
                         <?php foreach ($hotels[0] as $key => $value ) : ?>
-                            <th scope="col" class="text-light fw-bold text-uppercase"><?php echo "$key" ?></th>
+                            <th scope="col" class="text-light fw-bold text-uppercase">
+                                <?php
+                                if ($key === 'distance_to_center') {
+                                    $key = 'Distance to Center';
+                                }
+                                echo "$key";
+                                ?>
+                                </th>
                         <?php endforeach; ?>
                         </tr>
                     </thead>
@@ -94,6 +103,9 @@
                                         <?php
                                         if ($key === 'parking') {
                                             $value ? $value = 'Available' : $value ='Not Available'; 
+                                        }
+                                        if ($key === 'vote') {
+                                            $value = $value . ' ' . '<i class="fa-solid fa-star" style="color: #ffd700;"></i>';
                                         }
                                         echo "$value";
                                         ?>
