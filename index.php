@@ -4,42 +4,42 @@
 
         [
             'name' => 'Hotel Belvedere',
-            'description' => 'Hotel Belvedere Descrizione',
+            'description' => 'Quaint, Inviting, Charming',
             'parking' => true,
             'vote' => 3,
             'distance_to_center' => 10.4
         ],
         [
             'name' => 'Hotel Futuro',
-            'description' => 'Hotel Futuro Descrizione',
+            'description' => 'Majestic, Historic, Sophisticated',
             'parking' => true,
             'vote' => 2,
             'distance_to_center' => 2
         ],
         [
             'name' => 'Hotel Rivamare',
-            'description' => 'Hotel Rivamare Descrizione',
+            'description' => 'Rustic, Scenic, Serene',
             'parking' => false,
             'vote' => 1,
             'distance_to_center' => 1
         ],
         [
             'name' => 'Hotel Bellavista',
-            'description' => 'Hotel Bellavista Descrizione',
+            'description' => 'Elegant, Luxurious, Upscale',
             'parking' => false,
             'vote' => 5,
             'distance_to_center' => 5.5
         ],
         [
             'name' => 'Hotel Milano',
-            'description' => 'Hotel Milano Descrizione',
+            'description' => 'Modern, Stylish, Trendy',
             'parking' => true,
             'vote' => 2,
             'distance_to_center' => 50
         ],
         [
             'name' => 'Hotel Ognissanti',
-            'description' => 'Hotel Ognissanti Descrizione',
+            'description' => 'Beachfront, Tropical, Relaxing',
             'parking' => true,
             'vote' => 4,
             'distance_to_center' => 1.5
@@ -72,7 +72,7 @@
 <body>
     <div class="wrapper d-flex justify-content-center align-items-center">
         <div class="container p-4">
-            <h1 class="text-center fw-bold mb-3">Hotels.bool</h1>
+            <h1 class="text-center fw-bold mb-3"><i class="fa-solid fa-hotel"></i> Hotels.bool</h1>
             <div class="select_container">
                 <select class="form-select" name="hotels_filter" id="hotels" aria-label="hotels">
                     <option selected value="">Filter</option>
