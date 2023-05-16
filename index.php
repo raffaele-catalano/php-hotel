@@ -70,22 +70,36 @@
 <body>
     <div class="wrapper d-flex justify-content-center align-items-center">
         <div class="container p-4">
-            <h1 class="text-center fw-bold mb-3">Hotels List</h1>
+            <h1 class="text-center fw-bold mb-3">Hotels.bool</h1>
+            <div class="select_container">
+                <select class="form-select" name="hotels_filter" id="hotels">
+                    <option selected value="">Filter</option>
+                    <option value="1">All Hotels</option>
+                    <option value="2">Hotels with Parking</option>
+            </div>
+            </select>
             <table class="table">
                 <thead>
                     <tr>
-                            <?php foreach ($hotels[0] as $key => $value ) : ?>
-                                <th class="text-light fw-bold text-uppercase"><?php echo "$key" ?></th>
-                            <?php endforeach; ?>
+                        <?php foreach ($hotels[0] as $key => $value ) : ?>
+                            <th scope="col" class="text-light fw-bold text-uppercase"><?php echo "$key" ?></th>
+                        <?php endforeach; ?>
                         </tr>
                     </thead>
                     <tbody>
                         <?php foreach ($hotels as $hotel ) : ?>
-                        <tr>
-                            <?php foreach ($hotel as $value) : ?>
-                            <td class="text-light"><?php echo "$value" ?></td>
-                            <?php endforeach; ?>
-                        </tr>
+                            <tr>
+                                <?php foreach ($hotel as $key => $value) : ?>
+                                    <td scope="col" class="text-light">
+                                        <?php
+                                        if ($key === 'parking') {
+                                            $value ? $value = 'Available' : $value ='Not Available'; 
+                                        }
+                                        echo "$value";
+                                        ?>
+                                        </td>
+                                <?php endforeach; ?>
+                            </tr>
                         <?php endforeach; ?>
                     </tbody>
             </table>
