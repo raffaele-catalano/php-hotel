@@ -46,7 +46,28 @@
         ],
 
     ];
-    // console log
+
+    $filteredHotels = $hotels;
+
+    if(isset($_POST['hotels_filter'])) {
+        $filteredHotels = [];
+        $filter = $_POST['hotels_filter'];
+    }
+
+    if ($filter === "all") {
+        $filteredHotels = $hotels;
+    }
+
+    if ($filter === "w_parking") {
+        $filteredHotels = [];
+        foreach($hotels as $hotel) {
+            if ($hotel["parking"]) $filteredHotels[] = $hotel;
+        }
+    }
+
+
+    //console log
+    // var_dump($_POST)
     // var_dump($hotels);
 ?>
 
@@ -71,19 +92,24 @@
 
 <body>
     <div class="wrapper d-flex justify-content-center align-items-center">
+
         <div class="container p-4">
-            <h1 class="text-center fw-bold mb-3"><i class="fa-solid fa-hotel"></i> Hotels.bool</h1>
-            <div class="select_container">
+
+            <h1 class="text-center fw-bold mb-3"><i class="fa-solid fa-hotel" style="color: #FFC107;"></i> Hotels.bool</h1>
+
+            <form action="index.php" method="POST" class="d-flex mb-2">
                 <select class="form-select" name="hotels_filter" id="hotels" aria-label="hotels">
-                    <option selected value="">Filter</option>
-                    <option value="1">All Hotels</option>
-                    <option value="2">Hotels with Parking</option>
-            </div>
-            </select>
+                    <option selected disabled="disabled">Filter</option>
+                    <option value="all">All Hotels</option>
+                    <option value="w_parking">Hotels with Parking</option>
+                </select>
+                <button type="submit" class="btn btn-warning ms-2">Submit</button>
+            </form>
+<!-- ################################################################################################ -->
             <table class="table">
                 <thead>
                     <tr>
-                        <?php foreach ($hotels[0] as $key => $value ) : ?>
+                        <?php foreach ($filteredHotels[0] as $key => $value ) : ?>
                             <th scope="col" class="text-light fw-bold text-uppercase">
                                 <?php
                                 if ($key === 'distance_to_center') {
@@ -96,7 +122,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($hotels as $hotel ) : ?>
+                        <?php foreach ($filteredHotels as $hotel ) : ?>
                             <tr>
                                 <?php foreach ($hotel as $key => $value) : ?>
                                     <td scope="col" class="text-light">
@@ -105,7 +131,7 @@
                                             $value ? $value = 'Available' : $value ='Not Available'; 
                                         }
                                         if ($key === 'vote') {
-                                            $value = $value . ' ' . '<i class="fa-solid fa-star" style="color: #ffd700;"></i>';
+                                            $value = $value . ' ' . '<i class="fa-solid fa-star" style="color: #FFC107;"></i>';
                                         }
                                         if ($key === 'distance_to_center') {
                                             $value = $value . ' ' . 'km';
@@ -118,6 +144,7 @@
                         <?php endforeach; ?>
                     </tbody>
             </table>
+<!-- ################################################################################################ -->
         </div>
     </div>
 </body>
