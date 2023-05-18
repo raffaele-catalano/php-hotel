@@ -48,10 +48,10 @@
     ];
 
     $filteredHotels = $hotels;
+    $filter = $_POST['hotels_filter'] ?? null;
 
     if(isset($_POST['hotels_filter'])) {
         $filteredHotels = [];
-        $filter = $_POST['hotels_filter'];
     }
 
     if ($filter === "all") {
